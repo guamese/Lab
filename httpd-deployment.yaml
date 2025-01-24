@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: httpd-rep3
+  name: httpd-rep3
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: httpd-rep3
+  template:
+    metadata:
+      labels:
+        app: httpd-rep3
+    spec:
+      containers:
+      - image: httpd
+        name: httpd
