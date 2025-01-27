@@ -6,7 +6,7 @@ metadata:
   name: mealie
   namespace: mealie
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: mealie
@@ -20,3 +20,11 @@ spec:
         name: mealie
         ports:
           - containerPort: 9000
+        volumeMounts:
+          - mountPath: /app/data
+            name: mealie-data
+      volumes: 
+        - name: mealie-data
+          persistentVolumeClaim:
+            claimName: mealie-data
+
